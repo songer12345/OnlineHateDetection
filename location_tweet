@@ -1,0 +1,32 @@
+cd ../../zfs/socbd/liao5/real-time-tweet/tweepy
+
+cd ../../zfs/socbd/liao5/real-time-tweet/tweepy/self-report
+
+cd ../../zfs/socbd/liao5/tweet/covid
+
+cd ../../zfs/socbd/liao5/tweet/covid/all_hate/raw_data
+
+module load cuda/9.2.88-gcc/7.1.0 cudnn/7.6.5.32-9.2-linux-x64-gcc/7.1.0-cuda9_2 anaconda3/2019.10-gcc/8.3.1
+conda activate pytorch_env
+
+
+qsub -I -l select=1:ncpus=8:mem=15gb:interconnect=1g,walltime=336:00:00
+
+qsub -I -l select=1:ncpus=24:mem=120gb:interconnect=10ge,walltime=72:00:00
+
+
+qsub -I -l select=1:ncpus=24:mem=120gb:ngpus=1:gpu_model=p100:interconnect=10ge,walltime=72:00:00
+
+
+python tweepy.py
+#python clean_tweet.py
+python get_picture.py
+python hydrate.py
+
+
+cd ../../zfs/socbd/liao5/tweet/covid/6-21-user-analysis
+
+AAAAAAAAAAAAAAAAAAAAABhDFgEAAAAA6QCcqAz%2FyRLLp9fB8BW1eZvjA0M%3DVo048xfFwnaAnCZAtA0v8mc7fINq2jaUsrRM9pF0fKJqloaMVi
+
+Github token:
+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
